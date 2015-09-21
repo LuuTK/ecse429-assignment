@@ -13,10 +13,6 @@ import static org.junit.Assert.*;
 import ca.mcgill.ecse429.*;
 import ca.mcgill.ecse429.conformancetest.ccoinbox.CCoinBox;
 
-
-//CCoinBox State Machines
-enum State { empty, notAllowed, allowed }
-
 public class TestCCoinBox {
 
 	@BeforeClass
