@@ -35,6 +35,7 @@ public class TestCCoinBox {
 	}
 	
 	
+	//only testing the first jUnit
 	
 	@Test
 	public void test() {
