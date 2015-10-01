@@ -1,5 +1,11 @@
 package ca.mcgill.ecse429.conformancetest.ccoinbox;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import javax.print.DocFlavor.URL;
+
 public class CCoinBox
 {
 
@@ -240,6 +246,44 @@ public class CCoinBox
             "allowVend" + ":" + getAllowVend()+ "]"
      + outputString;
   }
+  
+  
+  public static void main(String[] args) throws IOException {
+	  String addNewLine = "\n";
+	  
+	  //URL url = getClass().getResource("CCoinBox.java");
+	  
+	  System.out.println("In Main Class \n");
+	  File outputTestFile = new File("src/TestCCoinBox.java");
+	  FileWriter outputTestFileWriter = new FileWriter(outputTestFile); 
+	  
+	  outputTestFile.createNewFile(); //creates a new testCCoinBox file
+	  outputTestFileWriter.write(""
+			+ "public class TestCCoinBox{" + addNewLine
+	  		+ "public static void main(String[] args) {" + addNewLine
+			+ "System.out.println(\"In Main Class \");" + addNewLine
+	  		
+	  		
+	  		+ "}" + addNewLine
+			
+	  		
+	  		
+	  		
+	  		
+	  		+ "}" + addNewLine
+			  
+			  
+			  
+			  
+			  );
+	  outputTestFileWriter.flush();
+	  outputTestFileWriter.close();
+	  
+	  
+  }
+  
+  
+  
 }
 
 
