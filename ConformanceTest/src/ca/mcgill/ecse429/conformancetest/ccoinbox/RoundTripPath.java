@@ -10,8 +10,11 @@ public class RoundTripPath {
 		StateMachine sm = StateMachine.getInstance();
 		int i = 0;
 		System.out.println(sm.getStates());
-		while(sm.getTransitions().isEmpty() == false){
+		
+		// QUICKFIX : added in the while statement to avoid the error (out of bounds)
+		while(sm.getTransitions().isEmpty() == false && i < 13){
 			System.out.println("transitions");
+			//System.out.println(sm.getTransition(i).getEvent());
 			System.out.println(sm.getTransition(i));
 			i++;
 		}
