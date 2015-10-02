@@ -246,12 +246,6 @@ public class CCoinBox
             "allowVend" + ":" + getAllowVend()+ "]"
      + outputString;
   }
-  
-  
-  
-  
-  
-  
 }
 
 
