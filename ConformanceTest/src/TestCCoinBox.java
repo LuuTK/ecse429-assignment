@@ -23,8 +23,9 @@ public class TestCCoinBox {
 
 		outputTestFile.createNewFile(); // creates a new testCCoinBox file
 		outputTestFileWriter
-				.write("" + "public class GeneratedTestFile{" + addNewLine + "public static void main(String[] args) {"
-						+ addNewLine + "System.out.println(\"In Main Class \");" + addNewLine
+				.write("" + "public class GeneratedTestFile{" + addNewLine 
+						+ "public static void main(String[] args) {" + addNewLine
+						+ "System.out.println(\"In Main Class \");" + addNewLine
 
 		+ "}" + addNewLine
 
