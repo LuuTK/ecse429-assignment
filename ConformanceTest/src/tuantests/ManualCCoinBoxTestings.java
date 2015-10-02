@@ -84,7 +84,7 @@ public class ManualCCoinBoxTestings {
 
 		System.out.println(CCoinBoxString);
 		String tmp = sm.getClassName();
-		constructor = tmp.substring(0, sm.getClassName().length() - 5);
+		String constructor = tmp.substring(0, sm.getClassName().length() - 5);
 		//CCoinBoxString test = new CCoinBoxString();
 
 	}
