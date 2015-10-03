@@ -16,22 +16,19 @@ public class RoundTripPath {
 	
 	private static class Node {
 		private State name;
-		private Boolean isParent;
-		private Node parent;
-		private List<Node> children;
 		private int value;
 		private State state;
 		private Transition prevTrans;
+		private ArrayList<Node> children;
 
 		public Node(State state, Transition prevTrans, ArrayList<Node> children) {
 			this.state = state;
 			this.prevTrans = prevTrans;
-			children = new ArrayList<Node>();
+			this.children = new ArrayList<Node>();
 		}
-
-		public void treeInstert(Node parentNode, Node childrenNode) {
-			parentNode.children.add(childrenNode);
-			childrenNode.parent = parentNode;
+		
+		public void addChild(Node newNode){
+			children.add(newNode);
 		}
 	}
 	
@@ -40,71 +37,30 @@ public class RoundTripPath {
 		StateMachine sm = StateMachine.getInstance();
 		ArrayList<Node> fullTree = new ArrayList<Node>();
 		State currentState = sm.getStartState();
-		Node rootNode = new Node(currentState, null, new ArrayList<Node>());
+		Node rootNode = new Node(currentState, null, null);
 		
-		int indexStart = sm.indexOfState(currentState);
-		Transition startTrans = sm.getTransition(indexStart);
-		
-		LinkedList<Transition> transitions = new LinkedList<Transition>(); 
+		LinkedList<Transition> transitions = new LinkedList<Transition>();
 		for(int i = 0; i < sm.getTransitions().size(); i++){
 			transitions.add(sm.getTransition(i));
 		}
+		
+		Node previousNode = rootNode;
+		fullTree.add(0, rootNode);
 		while(transitions.isEmpty() == false){
-			
 			Transition currentTransition = transitions.poll();
 			currentState = currentTransition.getFrom();
-		
-			//Node currentNode = new Node(currentState, );
+				
+			Node nextNode = new Node(currentTransition.getTo(), currentTransition , null);
 			
+			if(!nextNode.equals(null))	{
+				previousNode.addChild(nextNode);
+			}
 			
-			//Node root = new Node(startState);
-		    //root.addChild(new Node("child1"));
-		   // root.addChild(new Node("child2")); //etc.
-			
-			//System.out.println("transitions");
-			//System.out.println(sm.getTransition(i).getEvent());
-			//System.out.println(sm.getTransition(0));
-			//System.out.println("gennnn"+ sm.getState(0) + "stateeeeeeeeee");
+			fullTree.add(nextNode);
+			previousNode = nextNode;	
 		}
 		
+		System.out.println("hello");
 	}
 
 }
-
-
-/*import org.w3c.dom.*;
-import java.util.*;
-
-public class StackTraversal implements ITraversal {
-
-  *//**
-   * Performs full tree traversal using stack.
-   *//*
-  public void traverse( Node rootNode ) {
-
-    Stack stack = new Stack();
-    // ignore root -- root acts as a container
-    Node node=rootNode.getFirstChild();
-
-    while (node!=null) {
-      // print node information
-      System.out.println( node.getNodeName()+"="+node.getNodeValue());
-
-      if ( node.hasChildNodes()) {
-        // store next sibling in the stack. We return to it after all children are
-        processed.
-        if (node.getNextSibling()!=null)
-          stack.push( node.getNextSibling() );
-        node = node.getFirstChild();
-      }
-      else {
-        node = node.getNextSibling();
-        if (node==null && !stack.isEmpty())
-          // return to the parent's level.
-          // note that some levels can be skipped if the parent's node was the last one.
-          node=(Node) stack.pop();
-      }
-    }
-  }
-}
-*/
