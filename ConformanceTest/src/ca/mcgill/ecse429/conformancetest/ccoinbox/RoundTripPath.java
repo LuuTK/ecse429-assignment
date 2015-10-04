@@ -2,8 +2,11 @@ package ca.mcgill.ecse429.conformancetest.ccoinbox;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+
 import org.w3c.dom.*;
 
 import ca.mcgill.ecse429.conformancetest.statemodel.State;
@@ -20,11 +23,13 @@ public class RoundTripPath {
 		private State state;
 		private Transition prevTrans;
 		private ArrayList<Node> children;
+		
 
 		public Node(State state, Transition prevTrans, ArrayList<Node> children) {
 			this.state = state;
 			this.prevTrans = prevTrans;
 			this.children = new ArrayList<Node>();
+		
 		}
 		
 		public void addChild(Node newNode){
@@ -34,6 +39,7 @@ public class RoundTripPath {
 	
 	public static void main(String[] agrs) throws IOException{
 		PersistenceStateMachine.loadStateMachine("ccoinbox.xml");
+		HashMap<String, Node> map = new HashMap<String, Node>();
 		StateMachine sm = StateMachine.getInstance();
 		ArrayList<Node> fullTree = new ArrayList<Node>();
 		State currentState = sm.getStartState();
@@ -45,19 +51,24 @@ public class RoundTripPath {
 		}
 		
 		Node previousNode = rootNode;
+		
 		fullTree.add(0, rootNode);
+		map.put(rootNode.state.getName(), rootNode);
+		
 		while(transitions.isEmpty() == false){
 			Transition currentTransition = transitions.poll();
 			currentState = currentTransition.getFrom();
-				
-			Node nextNode = new Node(currentTransition.getTo(), currentTransition , null);
+			previousNode = map.get(currentState.getName());
 			
-			if(!nextNode.equals(null))	{
-				previousNode.addChild(nextNode);
+			Node nextNode = new Node(currentTransition.getTo(), currentTransition , null);
+			if(!map.containsKey(currentTransition.getTo().getName())){
+				map.put(currentTransition.getTo().getName(), nextNode);
 			}
+		
+			previousNode.addChild(nextNode);
 			
 			fullTree.add(nextNode);
-			previousNode = nextNode;	
+				
 		}
 		
 		System.out.println("hello");
