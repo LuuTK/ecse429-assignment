@@ -251,9 +251,7 @@ public class Main {
 		outputTestFileWriter.close();
 	}
 	
-	public static void CreateFileFunctions(){
 
-	}
 	public static void main(String[] args) throws IOException {	
 		generateRoundTripPathFile();
 		GeneratedRoundTripPath.main(args);
