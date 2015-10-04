@@ -91,18 +91,23 @@ public class RoundTripPath {
 			outputString += "public void conformanceTest" + i + "() {" + addNewLine
 			+ CCoinBoxString + " ccb = new " + CCoinBoxString + "();" + addNewLine
 			+ "StateMachine sm;" + addNewLine
-			+ "sm = StateMachine.getInstance();" + addNewLine;
-			
-			for(int j = 0; j < allPaths.get(i).size(); j++){
-				
-			outputString += "System.out.println(\"==================== conformanceTest" + i +"." + j + " =========================\");" + addNewLine
+			+ "sm = StateMachine.getInstance();" + addNewLine
+			+ "assertTrue(ccb.getStateFullName()," + "" +  "ccb.getStateFullName().equals(\"empty\"));" + addNewLine;
 
-					+ "assertTrue(ccb.getStateFullName()," + "" +  "ccb.getStateFullName().equals(\"empty\"));" + addNewLine
+			for(int j = 1; j < allPaths.get(i).size(); j++){
+				
+			outputString += "System.out.println(\"==================== conformanceTest" + i + "." + j +" =========================\");" + addNewLine;
+
+					//+ "assertTrue(ccb.getStateFullName()," + "" +  "ccb.getStateFullName().equals(\"empty\"));" + addNewLine
 					//ERROR HERE : IT OUTPUT STARTS INSTEAD OF EMPTY
+					if(j!=1){
+						outputString += "ccb." + allPaths.get(i).get(j).prevTrans.getEvent() + "();" + addNewLine;
+					}
+				outputString += "assertTrue(ccb.getStateFullName()," + "" +  "ccb.getStateFullName().equals(\"" + allPaths.get(i).get(j).state.getName() + "\")" + ");" + addNewLine;
 
 					//+ "assertTrue(ccb.getStateFullName()," + "" +  "ccb.getStateFullName().equals(\"" + allPaths.get(i).get(j).state.getName() + "\")" + ");" + addNewLine
-					+ "ccb." + allPaths.get(i).get(2).prevTrans.getEvent() + "();" + addNewLine;
 
+					outputString += "";
 				
 			}
 			if( i != allPathsLength){

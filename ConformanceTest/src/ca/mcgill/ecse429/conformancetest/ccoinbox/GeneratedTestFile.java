@@ -45,15 +45,12 @@ public class GeneratedTestFile {
 		CCoinBox ccb = new CCoinBox();
 		StateMachine sm;
 		sm = StateMachine.getInstance();
-		System.out.println("==================== conformanceTest0.0 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.returnQtrs();
 		System.out.println("==================== conformanceTest0.1 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.returnQtrs();
 		System.out.println("==================== conformanceTest0.2 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 		ccb.returnQtrs();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 	}
 
 	@Test
@@ -61,15 +58,12 @@ public class GeneratedTestFile {
 		CCoinBox ccb = new CCoinBox();
 		StateMachine sm;
 		sm = StateMachine.getInstance();
-		System.out.println("==================== conformanceTest1.0 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.reset();
 		System.out.println("==================== conformanceTest1.1 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.reset();
 		System.out.println("==================== conformanceTest1.2 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 		ccb.reset();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 	}
 
 	@Test
@@ -77,18 +71,15 @@ public class GeneratedTestFile {
 		CCoinBox ccb = new CCoinBox();
 		StateMachine sm;
 		sm = StateMachine.getInstance();
-		System.out.println("==================== conformanceTest2.0 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 		System.out.println("==================== conformanceTest2.1 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 		System.out.println("==================== conformanceTest2.2 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 		ccb.addQtr();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("notAllowed"));
 		System.out.println("==================== conformanceTest2.3 =========================");
+		ccb.returnQtrs();
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 	}
 
 	@Test
@@ -96,18 +87,15 @@ public class GeneratedTestFile {
 		CCoinBox ccb = new CCoinBox();
 		StateMachine sm;
 		sm = StateMachine.getInstance();
-		System.out.println("==================== conformanceTest3.0 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 		System.out.println("==================== conformanceTest3.1 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 		System.out.println("==================== conformanceTest3.2 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 		ccb.addQtr();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("notAllowed"));
 		System.out.println("==================== conformanceTest3.3 =========================");
+		ccb.reset();
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 	}
 
 	@Test
@@ -115,21 +103,18 @@ public class GeneratedTestFile {
 		CCoinBox ccb = new CCoinBox();
 		StateMachine sm;
 		sm = StateMachine.getInstance();
-		System.out.println("==================== conformanceTest4.0 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 		System.out.println("==================== conformanceTest4.1 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 		System.out.println("==================== conformanceTest4.2 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 		ccb.addQtr();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("notAllowed"));
 		System.out.println("==================== conformanceTest4.3 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 		ccb.addQtr();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("allowed"));
 		System.out.println("==================== conformanceTest4.4 =========================");
+		ccb.returnQtrs();
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 	}
 
 	@Test
@@ -137,21 +122,18 @@ public class GeneratedTestFile {
 		CCoinBox ccb = new CCoinBox();
 		StateMachine sm;
 		sm = StateMachine.getInstance();
-		System.out.println("==================== conformanceTest5.0 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 		System.out.println("==================== conformanceTest5.1 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 		System.out.println("==================== conformanceTest5.2 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 		ccb.addQtr();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("notAllowed"));
 		System.out.println("==================== conformanceTest5.3 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 		ccb.addQtr();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("allowed"));
 		System.out.println("==================== conformanceTest5.4 =========================");
+		ccb.reset();
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 	}
 
 	@Test
@@ -159,21 +141,18 @@ public class GeneratedTestFile {
 		CCoinBox ccb = new CCoinBox();
 		StateMachine sm;
 		sm = StateMachine.getInstance();
-		System.out.println("==================== conformanceTest6.0 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 		System.out.println("==================== conformanceTest6.1 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 		System.out.println("==================== conformanceTest6.2 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 		ccb.addQtr();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("notAllowed"));
 		System.out.println("==================== conformanceTest6.3 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 		ccb.addQtr();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("allowed"));
 		System.out.println("==================== conformanceTest6.4 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 		ccb.addQtr();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("allowed"));
 	}
 
 	@Test
@@ -181,21 +160,18 @@ public class GeneratedTestFile {
 		CCoinBox ccb = new CCoinBox();
 		StateMachine sm;
 		sm = StateMachine.getInstance();
-		System.out.println("==================== conformanceTest7.0 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 		System.out.println("==================== conformanceTest7.1 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 		System.out.println("==================== conformanceTest7.2 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 		ccb.addQtr();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("notAllowed"));
 		System.out.println("==================== conformanceTest7.3 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 		ccb.addQtr();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("allowed"));
 		System.out.println("==================== conformanceTest7.4 =========================");
+		ccb.vend();
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 	}
 
 	@Test
@@ -203,21 +179,18 @@ public class GeneratedTestFile {
 		CCoinBox ccb = new CCoinBox();
 		StateMachine sm;
 		sm = StateMachine.getInstance();
-		System.out.println("==================== conformanceTest8.0 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 		System.out.println("==================== conformanceTest8.1 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 		System.out.println("==================== conformanceTest8.2 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 		ccb.addQtr();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("notAllowed"));
 		System.out.println("==================== conformanceTest8.3 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 		ccb.addQtr();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("allowed"));
 		System.out.println("==================== conformanceTest8.4 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
+		ccb.vend();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("notAllowed"));
 	}
 
 	@Test
@@ -225,21 +198,18 @@ public class GeneratedTestFile {
 		CCoinBox ccb = new CCoinBox();
 		StateMachine sm;
 		sm = StateMachine.getInstance();
-		System.out.println("==================== conformanceTest9.0 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 		System.out.println("==================== conformanceTest9.1 =========================");
 		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
 		System.out.println("==================== conformanceTest9.2 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 		ccb.addQtr();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("notAllowed"));
 		System.out.println("==================== conformanceTest9.3 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
 		ccb.addQtr();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("allowed"));
 		System.out.println("==================== conformanceTest9.4 =========================");
-		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("empty"));
-		ccb.addQtr();
+		ccb.vend();
+		assertTrue(ccb.getStateFullName(), ccb.getStateFullName().equals("allowed"));
 	}
 
 }
