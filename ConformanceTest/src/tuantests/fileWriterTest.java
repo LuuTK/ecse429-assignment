@@ -39,7 +39,7 @@ public class fileWriterTest {
 						+ "package tuantests;" + addNewLine + addNewLine
 						+ "import ca.mcgill.ecse429.conformancetest.statemodel.StateMachine;" + addNewLine
 						+ "import ca.mcgill.ecse429.conformancetest.statemodel.persistence.PersistenceStateMachine;" + addNewLine
-						+ "import ca.mcgill.ecse429.conformancetest.ccoinbox.CCoinBox;" + addNewLine
+						+ "import ca.mcgill.ecse429.conformancetest.ccoinbox." + CCoinBoxString + ";" + addNewLine
 						+ "public class GeneratedFileWriterTest{" + addNewLine 
 
 						+ "public static void main(String[] args) {" + addNewLine

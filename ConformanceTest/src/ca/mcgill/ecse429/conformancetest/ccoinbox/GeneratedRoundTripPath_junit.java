@@ -55,11 +55,14 @@ public class GeneratedRoundTripPath_junit {
 
 	@Before
 	public void setUp() throws Exception {
-		
+		PersistenceStateMachine.loadStateMachine("ccoinbox.xml");
+		StateMachine sm;
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		StateMachine.getInstance().delete();
+
 	}
 
 	@Test
