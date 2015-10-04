@@ -39,7 +39,6 @@ public class CCoinBoxTest {
 		sm.setClassName(sm.getClassName());
 		sm.setPackageName(sm.getPackageName());
 		sm.setStartState(sm.getStartState());
-		
 //		System.out.println(sm.getStates().get(0));
 //		System.out.println(sm.getStates().get(1));
 //		System.out.println(sm.getStates().get(2));
