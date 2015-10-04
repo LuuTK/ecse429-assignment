@@ -1,24 +1,13 @@
 package ca.mcgill.ecse429.conformancetest.ccoinbox;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import org.w3c.dom.*;
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import ca.mcgill.ecse429.conformancetest.legislation.Legislation;
-import ca.mcgill.ecse429.conformancetest.statemodel.State;
 import ca.mcgill.ecse429.conformancetest.statemodel.StateMachine;
-import ca.mcgill.ecse429.conformancetest.statemodel.Transition;
 import ca.mcgill.ecse429.conformancetest.statemodel.persistence.PersistenceStateMachine;
-import tuantests.Node;
 
 public class GeneratedTestFile {
 

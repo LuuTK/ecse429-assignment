@@ -8,17 +8,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
-import org.junit.Test;
-import org.w3c.dom.*;
 
 import ca.mcgill.ecse429.conformancetest.statemodel.State;
 import ca.mcgill.ecse429.conformancetest.statemodel.StateMachine;
 import ca.mcgill.ecse429.conformancetest.statemodel.Transition;
 import ca.mcgill.ecse429.conformancetest.statemodel.persistence.PersistenceStateMachine;
-import tuantests.Node;
 
 public class RoundTripPath {
 	static ArrayList<ArrayList<Node>> allPaths = new ArrayList<ArrayList<Node>>();
@@ -65,8 +60,6 @@ public class RoundTripPath {
 			}
 		}
 
-		// printAllPaths(path.get(node.children.indexOf(node)),path);
-		// System.out.println("yo");
 	}
 
 	public static ArrayList<Node> copyPath(ArrayList<Node> path) {
@@ -94,14 +87,12 @@ public class RoundTripPath {
 			+ CCoinBoxString + " ccb = new " + CCoinBoxString + "();" + addNewLine
 			+ "StateMachine sm;" + addNewLine
 			+ "sm = StateMachine.getInstance();" + addNewLine;
-			//+ "assertTrue(ccb.getStateFullName()," + "" +  "ccb.getStateFullName().equals(\"empty\"));" + addNewLine;
 
 			for(int j = 1; j < allPaths.get(i).size(); j++){
 				
 			outputString += "System.out.println(\"==================== conformanceTest" + i + "." + j +" =========================\");" + addNewLine;
 
-					//+ "assertTrue(ccb.getStateFullName()," + "" +  "ccb.getStateFullName().equals(\"empty\"));" + addNewLine
-					//ERROR HERE : IT OUTPUT STARTS INSTEAD OF EMPTY
+					/* START Manual Changes Here */
 					if(j!=1){
 						outputString += "ccb." + allPaths.get(i).get(j).prevTrans.getEvent() + "();" + addNewLine;
 						
@@ -118,10 +109,11 @@ public class RoundTripPath {
 							outputString += "ccb.addQtr(); //hardcoded" + addNewLine;
 							
 						}
+						/* END Manual Changes Here */
+
 					}
 				outputString += "assertTrue(ccb.getStateFullName()," + "" +  "ccb.getStateFullName().equals(\"" + allPaths.get(i).get(j).state.getName() + "\")" + ");" + addNewLine;
 
-					//+ "assertTrue(ccb.getStateFullName()," + "" +  "ccb.getStateFullName().equals(\"" + allPaths.get(i).get(j).state.getName() + "\")" + ");" + addNewLine
 
 					outputString += "";
 				
@@ -131,20 +123,20 @@ public class RoundTripPath {
 			}
 		}
 		
-		System.out.println(allPaths.get(0).get(0).state.getName());
-		System.out.println(allPaths.get(0).get(1).prevTrans.getEvent());
-		System.out.println(allPaths.get(0).get(1).state.getName());
-		System.out.println(" returnQtrs : " + allPaths.get(0).get(2).prevTrans.getEvent());
-		System.out.println(allPaths.get(0).get(2).state.getName());
-		System.out.println();
-		System.out.println(allPaths.get(1).get(0).state.getName());
-		System.out.println(allPaths.get(1).get(1).prevTrans.getEvent());
-		System.out.println(allPaths.get(1).get(1).state.getName());
-		System.out.println(allPaths.get(1).get(2).prevTrans.getEvent());
-		System.out.println(allPaths.get(1).get(2).state.getName());
+		/* Testing purposes */
+//		System.out.println(allPaths.get(0).get(0).state.getName());
+//		System.out.println(allPaths.get(0).get(1).prevTrans.getEvent());
+//		System.out.println(allPaths.get(0).get(1).state.getName());
+//		System.out.println(" returnQtrs : " + allPaths.get(0).get(2).prevTrans.getEvent());
+//		System.out.println(allPaths.get(0).get(2).state.getName());
+//		System.out.println();
+//		System.out.println(allPaths.get(1).get(0).state.getName());
+//		System.out.println(allPaths.get(1).get(1).prevTrans.getEvent());
+//		System.out.println(allPaths.get(1).get(1).state.getName());
+//		System.out.println(allPaths.get(1).get(2).prevTrans.getEvent());
+//		System.out.println(allPaths.get(1).get(2).state.getName());
 
 		
-		//System.out.println(outputString);
 		System.out.println("=========== END  generateTestFunctions Automatically ============== ");
 
 		return outputString;
@@ -153,7 +145,6 @@ public class RoundTripPath {
 	public static void generateRoundTripPathFile(String outputString) throws IOException{
 		String addNewLine = "\n";
 
-		System.out.println("In Main Class \n");
 		PersistenceStateMachine.loadStateMachine(StateMachineXML);
 		StateMachine sm = StateMachine.getInstance();
 
@@ -171,13 +162,7 @@ public class RoundTripPath {
 		/* WRITE PACKAGE AND IMPORTS */
 		outputTestFileWriter.write(""
 				+ "package ca.mcgill.ecse429.conformancetest.ccoinbox;" + addNewLine
-				+ "import java.io.IOException;" + addNewLine
-				+ "import java.util.ArrayList; " + addNewLine
-				+ "import java.util.HashMap;" + addNewLine
-				+ "import java.util.LinkedList;" + addNewLine
-				+ "import java.util.List;" + addNewLine
-				+ "import java.util.Map;" + addNewLine
-				+ "import org.w3c.dom.*;" + addNewLine
+
 				
 				+ "import static org.junit.Assert.*;" + addNewLine
 
@@ -186,13 +171,8 @@ public class RoundTripPath {
 				+ "import org.junit.Before;" + addNewLine
 				+ "import org.junit.BeforeClass;" + addNewLine
 				+ "import org.junit.Test;" + addNewLine
-				
-				+ "import ca.mcgill.ecse429.conformancetest.legislation.Legislation;" + addNewLine
-				+ "import ca.mcgill.ecse429.conformancetest.statemodel.State;" + addNewLine
 				+ "import ca.mcgill.ecse429.conformancetest.statemodel.StateMachine;" + addNewLine
-				+ "import ca.mcgill.ecse429.conformancetest.statemodel.Transition;" + addNewLine
 				+ "import ca.mcgill.ecse429.conformancetest.statemodel.persistence.PersistenceStateMachine;" + addNewLine
-				+ "import tuantests.Node;" + addNewLine
 
 				+ ""
 				+ "");
@@ -279,7 +259,6 @@ public class RoundTripPath {
 
 		getAllPaths(rootNode, new ArrayList<Node>(), allPaths);
 
-		// System.out.println("hello");
 		// Prints all paths with states
 		for (int i = 0; i < allPaths.size(); i++) {
 			System.out.println();
@@ -287,13 +266,12 @@ public class RoundTripPath {
 				System.out.print(allPaths.get(i).get(j).state.getName() + ", ");
 			}
 		}
+		
 		System.out.println("");
 		System.out.println("========== GENERATED TEST FILE ==========");
 		
 		generateTestFunctions();
 		generateRoundTripPathFile(generateTestFunctions());
-		//GeneratedTestFile.main(args);
-		//GeneratedTestFile
 
 
 	}
