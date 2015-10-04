@@ -92,26 +92,31 @@ public class RoundTripPath {
 				
 			outputString += "System.out.println(\"==================== conformanceTest" + i + "." + j +" =========================\");" + addNewLine;
 
+			if(j!=1){
+				outputString += "ccb." + allPaths.get(i).get(j).prevTrans.getEvent() + "();" + addNewLine;
+			}
 					/* START Manual Changes Here */
-					if(j!=1){
-						outputString += "ccb." + allPaths.get(i).get(j).prevTrans.getEvent() + "();" + addNewLine;
-						
-						
-						/* hardcoded tests */
-						if((i == 6 && j == 4) && StateMachineXML.equals("ccoinbox.xml")){
-							outputString += "ccb." + allPaths.get(i).get(j).prevTrans.getEvent() + "(); //Hard coded" + addNewLine;
-						}
-						if(( i == 8 && j == 4 ) && StateMachineXML.equals("ccoinbox.xml")){
-							outputString += "ccb.addQtr(); //hardcoded" + addNewLine;
-						}
-						if(( i == 9 && j == 4 ) && StateMachineXML.equals("ccoinbox.xml")){
-							outputString += "ccb.addQtr(); //hardcoded" + addNewLine;
-							outputString += "ccb.addQtr(); //hardcoded" + addNewLine;
-							
-						}
-						/* END Manual Changes Here */
+//					if(j!=1){
+//						outputString += "ccb." + allPaths.get(i).get(j).prevTrans.getEvent() + "();" + addNewLine;
+//						
+//						
+//						/* hardcoded tests */
+//						if((i == 6 && j == 4) && StateMachineXML.equals("ccoinbox.xml")){
+//							outputString += "ccb." + allPaths.get(i).get(j).prevTrans.getEvent() + "(); //Hard coded" + addNewLine;
+//						}
+//						if(( i == 8 && j == 4 ) && StateMachineXML.equals("ccoinbox.xml")){
+//							outputString += "ccb.addQtr(); //hardcoded" + addNewLine;
+//						}
+//						if(( i == 9 && j == 4 ) && StateMachineXML.equals("ccoinbox.xml")){
+//							outputString += "ccb.addQtr(); //hardcoded" + addNewLine;
+//							outputString += "ccb.addQtr(); //hardcoded" + addNewLine;
+//							
+//						}
+//
+//					}
+//					
+					/* END Manual Changes Here */
 
-					}
 				outputString += "assertTrue(ccb.getStateFullName()," + "" +  "ccb.getStateFullName().equals(\"" + allPaths.get(i).get(j).state.getName() + "\")" + ");" + addNewLine;
 
 
@@ -151,7 +156,7 @@ public class RoundTripPath {
 		String CCoinBoxString = sm.getClassName().substring(0, sm.getClassName().length()-5);
 
 
-		File outputTestFile = new File("src/ca/mcgill/ecse429/conformancetest/ccoinbox/GeneratedTestFile.java");
+		File outputTestFile = new File("src/ca/mcgill/ecse429/conformancetest/ccoinbox/GeneratedTestCCoinBox.java");
 		FileWriter outputTestFileWriter = new FileWriter(outputTestFile);
 		
 		
@@ -179,7 +184,7 @@ public class RoundTripPath {
 		
 		/* WRITE FILE CLASS */
 		outputTestFileWriter.write(""
-				+ "public class GeneratedTestFile {" + addNewLine + addNewLine
+				+ "public class GeneratedTestCCoinBox {" + addNewLine + addNewLine
 								
 				
 				/* TESTS PART */
