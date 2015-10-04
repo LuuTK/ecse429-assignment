@@ -36,7 +36,7 @@ public class fileWriterTest {
 		outputTestFile.createNewFile(); // creates a new testCCoinBox file
 		outputTestFileWriter
 				.write("" 
-						+ "package tuantests;" + addNewLine
+						+ "package tuantests;" + addNewLine + addNewLine
 						+ "import ca.mcgill.ecse429.conformancetest.statemodel.StateMachine;" + addNewLine
 						+ "import ca.mcgill.ecse429.conformancetest.statemodel.persistence.PersistenceStateMachine;" + addNewLine
 						+ "import ca.mcgill.ecse429.conformancetest.ccoinbox.CCoinBox;" + addNewLine
