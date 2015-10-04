@@ -61,7 +61,7 @@ public class RoundTripPath {
 		}
 		
 		//printAllPaths(path.get(node.children.indexOf(node)),path);
-		System.out.println("yo");
+//		System.out.println("yo");
 	}
 	public static ArrayList<Node> copyPath (ArrayList<Node> path){
 		ArrayList<Node> newPath = new ArrayList<Node>();
@@ -107,7 +107,17 @@ public class RoundTripPath {
 		
 		ArrayList<ArrayList<Node>> allPaths = new ArrayList<ArrayList<Node>>();
 		getAllPaths(rootNode, new ArrayList<Node>(), allPaths);
-		System.out.println("hello");
+		
+		//System.out.println("hello");
+		//Prints all paths with states
+		for(int i = 0; i < allPaths.size(); i++){
+			System.out.println();
+			for(int j = 0; j < allPaths.get(i).size();j++){
+				System.out.print(allPaths.get(i).get(j).state.getName() + ", ");
+			}
+		}
+
+
 	}
 
 }
