@@ -75,35 +75,61 @@ public class RoundTripPath {
 		return newPath;
 	}
 	
-	public static void generateTestFunctions(){
+	public static String generateTestFunctions(){
 		
-		System.out.println("allPaths Size : " + allPaths.size());
+		System.out.println("=========== START generateTestFunctions Automatically ============== ");
 		Integer allPathsLength = allPaths.size();
 		String outputString = "";
 		String addNewLine = "\n";
+		
+		PersistenceStateMachine.loadStateMachine("ccoinbox.xml");
+		StateMachine sm = StateMachine.getInstance();
+		String CCoinBoxString = sm.getClassName().substring(0, sm.getClassName().length()-5);
+
 		for(int i = 0; i < allPathsLength; i++){
 			outputString += "@Test" + addNewLine;
-			outputString += "public void conformanceTest" + i + "() {" + addNewLine;
-			outputString += "System.out.println(\"==================== conformanceTest" + i + " =========================\");" + addNewLine
-					+ "StateMachine sm;" + addNewLine
-					+ "sm = StateMachine.getInstance();" + addNewLine
-					+ "assertTrue(ccb.getState().name(), ccb.getState().name().equals(\"empty\"));"
-					+ ""
-					+ ""
-					+ ""
-					+ "";
+			outputString += "public void conformanceTest" + i + "() {" + addNewLine
+			+ CCoinBoxString + " ccb = new " + CCoinBoxString + "();" + addNewLine
+			+ "StateMachine sm;" + addNewLine
+			+ "sm = StateMachine.getInstance();" + addNewLine;
+			
+			for(int j = 0; j < allPaths.get(i).size(); j++){
+				
+			outputString += "System.out.println(\"==================== conformanceTest" + i +"." + j + " =========================\");" + addNewLine
+
+					+ "assertTrue(ccb.getStateFullName()," + "" +  "ccb.getStateFullName().equals(\"empty\"));" + addNewLine
+					//ERROR HERE : IT OUTPUT STARTS INSTEAD OF EMPTY
+
+					//+ "assertTrue(ccb.getStateFullName()," + "" +  "ccb.getStateFullName().equals(\"" + allPaths.get(i).get(j).state.getName() + "\")" + ");" + addNewLine
+					+ "ccb." + allPaths.get(i).get(2).prevTrans.getEvent() + "();" + addNewLine;
+
+				
+			}
+			if( i != allPathsLength){
+				outputString += "}" + addNewLine ; 
+			}
 		}
 		
 		System.out.println(allPaths.get(0).get(0).state.getName());
 		System.out.println(allPaths.get(0).get(1).prevTrans.getEvent());
 		System.out.println(allPaths.get(0).get(1).state.getName());
-		System.out.println(allPaths.get(0).get(2).prevTrans.getEvent());
+		System.out.println(" returnQtrs : " + allPaths.get(0).get(2).prevTrans.getEvent());
 		System.out.println(allPaths.get(0).get(2).state.getName());
+		System.out.println();
+		System.out.println(allPaths.get(1).get(0).state.getName());
+		System.out.println(allPaths.get(1).get(1).prevTrans.getEvent());
+		System.out.println(allPaths.get(1).get(1).state.getName());
+		System.out.println(allPaths.get(1).get(2).prevTrans.getEvent());
+		System.out.println(allPaths.get(1).get(2).state.getName());
+
 		
-		
+		//System.out.println(outputString);
+		System.out.println("=========== END  generateTestFunctions Automatically ============== ");
+
+		return outputString;
 	}
 	
-	public static void generateRoundTripPathFile() throws IOException{
+	public static void generateRoundTripPathFile(String outputString) throws IOException{
 		String addNewLine = "\n";
 
 		System.out.println("In Main Class \n");
@@ -173,44 +199,43 @@ public class RoundTripPath {
 				+ "public void tearDown() throws Exception {" + addNewLine
 				+ "	StateMachine.getInstance().delete();" + addNewLine
 				+ "}" + addNewLine
+				+ outputString + addNewLine
+//				/* Test 1 */
+//				+ "@Test" + addNewLine
+//				+ "public void conformanceTest01() {" + addNewLine
+//				+ "	System.out.println(\"==================== conformanceTest01 =========================\");" + addNewLine
+//						+ "	StateMachine sm;" + addNewLine
+//				+ "	sm = StateMachine.getInstance();" + addNewLine
+//				+ 	CCoinBoxString + " ccb = new " + CCoinBoxString + "();" + addNewLine
+//					
+//				+ "	//constructor initial state" + addNewLine
+//				+ "	System.out.println(\"ccb.getStateFullName(): \" + ccb.getStateFullName());" + addNewLine
+//					+ "	assertTrue(ccb.getState().getStateFullName()," +   ");" + addNewLine
+//					
+//					
+//					
+//				+ "}" + addNewLine
+//				/* Test 2 */
+//				
+//				+ "	@Test" + addNewLine
+//				+ "public void conformanceTest02(){" + addNewLine
+//				+ "System.out.println(\"==================== conformanceTest02 =========================\");" + addNewLine
+//	
+//				+ "StateMachine sm;" + addNewLine
+//				+ "sm = StateMachine.getInstance();" + addNewLine
+//				+ "CCoinBox ccb = new CCoinBox();" + addNewLine
+//			
+//				+ "//start, empty, empty, " + addNewLine
+//				+ "System.out.println(\"ccb.getStateFullName() : \" + ccb.getStateFullName());" + addNewLine
+//				+ "System.out.println(\"ccb.returnQtrs()\");" + addNewLine
+//				+ "ccb.returnQtrs();" + addNewLine
+//				+ "System.out.println(\"ccb.getState() : \" + ccb.getState());" + addNewLine
+//				+ "ccb.addQtr();" + addNewLine
+//				+ "System.out.println(\"ccb.getState()  after add : \" + ccb.getState());" + addNewLine
 
-				/* Test 1 */
-				+ "@Test" + addNewLine
-				+ "public void conformanceTest01() {" + addNewLine
-				+ "	System.out.println(\"==================== conformanceTest01 =========================\");" + addNewLine
-						+ "	StateMachine sm;" + addNewLine
-				+ "	sm = StateMachine.getInstance();" + addNewLine
-				+ 	CCoinBoxString + " ccb = new " + CCoinBoxString + "();" + addNewLine
-					
-				+ "	//constructor initial state" + addNewLine
-				+ "	System.out.println(\"ccb.getState().name() : \" + ccb.getState().name());" + addNewLine
-					+ "	assertTrue(ccb.getState().name(), ccb.getState().name().equals(\"empty\"));" + addNewLine
-					
-					
-					
-				+ "}" + addNewLine
-				/* Test 2 */
-				
-				+ "	@Test" + addNewLine
-				+ "public void conformanceTest02(){" + addNewLine
-				+ "System.out.println(\"==================== conformanceTest02 =========================\");" + addNewLine
-	
-				+ "StateMachine sm;" + addNewLine
-				+ "sm = StateMachine.getInstance();" + addNewLine
-				+ "CCoinBox ccb = new CCoinBox();" + addNewLine
-			
-				+ "//start, empty, empty, " + addNewLine
-				+ "System.out.println(\"ccb.getStateFullName() : \" + ccb.getStateFullName());" + addNewLine
-				+ "System.out.println(\"ccb.returnQtrs()\");" + addNewLine
-				+ "ccb.returnQtrs();" + addNewLine
-				+ "System.out.println(\"ccb.getState() : \" + ccb.getState());" + addNewLine
-				+ "ccb.addQtr();" + addNewLine
-				+ "System.out.println(\"ccb.getState()  after add : \" + ccb.getState());" + addNewLine
-
 		
 		
 		
-				+ "}" + addNewLine
 			+ ""
 
 				
@@ -274,8 +299,8 @@ public class RoundTripPath {
 		System.out.println("");
 		System.out.println("========== GENERATED TEST FILE ==========");
 		
-		//generateTestFunctions();
-		generateRoundTripPathFile();
+		generateTestFunctions();
+		generateRoundTripPathFile(generateTestFunctions());
 		//GeneratedTestFile.main(args);
 		//GeneratedTestFile
 
