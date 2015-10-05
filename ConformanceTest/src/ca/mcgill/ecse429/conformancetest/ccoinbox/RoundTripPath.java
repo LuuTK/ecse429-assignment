@@ -1,7 +1,5 @@
 package ca.mcgill.ecse429.conformancetest.ccoinbox;
 
-import static org.junit.Assert.assertTrue;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
